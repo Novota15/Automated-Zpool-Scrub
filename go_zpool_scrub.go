@@ -9,7 +9,9 @@ import (
 )
 
 func main() {
-  cmd := exec.Command("ls")
+  arg0 := "zpool status"
+
+  cmd := exec.Command(arg0)
 
   stdout, err := cmd.Output()
 
