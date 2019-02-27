@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-  arg0 := "zpool status"
+  //arg0 := "zpool status"
 
   cmd := exec.Command("ls")
 
