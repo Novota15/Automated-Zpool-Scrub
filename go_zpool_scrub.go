@@ -11,7 +11,7 @@ import (
 func main() {
   arg0 := "zpool status"
 
-  cmd := exec.Command(arg0)
+  cmd := exec.Command("ls")
 
   stdout, err := cmd.Output()
 
