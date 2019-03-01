@@ -8,10 +8,20 @@ import (
    //"io"
 )
 
+type Pool struct {
+  Name string
+  Status string
+
+}
+
 func main() {
   //arg0 := "zpool status"
 
-  cmd := exec.Command("bash", "-c", "zpool status")
+  //use zpool list to get zpools and store in pool struct
+
+  //cmd := exec.Command("bash", "-c", "zpool status")
+
+  cmd := exec.Command("bash", "-c", "zpool list")
 
   stdout, err := cmd.Output()
 
@@ -21,6 +31,10 @@ func main() {
   }
 
   print(string(stdout))
+
+  
+
+
 }
 
 
