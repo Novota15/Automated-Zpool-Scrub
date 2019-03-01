@@ -32,12 +32,11 @@ func main() {
   }
 
   ln := strings.Split(string(stdout), "\n")
-  for i := 0; i < len(ln); i++ {
+  for i := 1; i < len(ln); i++ {
     fmt.Println(ln[i])
     s := strings.Split(ln[i], " ")
-    for j := 0; j < len(s); j++ {
-       pool := s[j]
-       fmt.Println(pool)
+    pool := s[0]
+    fmt.Println(pool)
     }
   }
   
