@@ -33,7 +33,7 @@ func main() {
 
   ln := strings.Split(string(stdout), "\n")
   for i := 0; i < len(ln); i++ {
-    s := strings.Split(ln[i], " ")
+    s := strings.Split(string(ln[i]), " ")
     for j := 0; j < ln(s); j++ {
       pool := s[j]
       fmt.Println(pool)
