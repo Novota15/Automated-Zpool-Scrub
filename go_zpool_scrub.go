@@ -32,7 +32,7 @@ func main() {
   }
 
   s := strings.Split(string(stdout), "/t")
-  pool1, pool2 := s[11], s[22]
+  pool1, pool2 := s[0], s[5]
   print(string(stdout))
   fmt.Println(pool1, pool2)
   
