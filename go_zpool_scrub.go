@@ -31,15 +31,18 @@ func main() {
     return
   }
 
-  ln := strings.Split(string(stdout), "\n")
-  for i := 1; i < len(ln); i++ {
-    fmt.Println(ln[i])
-    s := strings.Split(ln[i], " ")
-    pool := s[0]
-    fmt.Println(pool)
+  ln := strings.Split(string(stdout), "\n") //split into lines
+  //create array for storing pool structs that has length ln - 1
+  var pools [len(ln) - 1]Pool
+  for i := 1; i < len(ln); i++ { //iterate thru each line
+    //fmt.Println(ln[i])
+    s := strings.Split(ln[i], " ") //split each line
+    pool := s[0] //name of the pool ->start of each line
+    //fmt.Println(pool)
+    pools[i-1].Name = pool
   }
   
-  print(string(stdout))
+  //print(string(stdout))
   
 
 
