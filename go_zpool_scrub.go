@@ -31,10 +31,16 @@ func main() {
     return
   }
 
-  s := strings.Split(string(stdout), "\n")
-  pool1, pool2 := s[0], s[1]
+  ln := strings.Split(string(stdout), "\n")
+  for i := 0; i < len(ln); i++ {
+    s := stirngs.Split(ln[i], " ")
+    for j := 0; j < ln(s); j++ {
+      pool := s[j]
+      fmt.Println(pool)
+    }
+  }
+  
   print(string(stdout))
-  fmt.Println(pool1, pool2)
   
 
 
