@@ -34,7 +34,7 @@ func main() {
   ln := strings.Split(string(stdout), "\n") //split into lines
   //create array for storing pool structs that has length ln - 1
   pool_size := len(ln) - 1
-  var pools [pool_size]Pool
+  pools := make([]Pool, pool_size)
   for i := 1; i < len(ln); i++ { //iterate thru each line
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
