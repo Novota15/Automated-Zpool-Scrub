@@ -35,7 +35,7 @@ func main() {
   for i := 0; i < len(ln); i++ {
     fmt.Println(ln[i])
     s := strings.Split(ln[i], " ")
-    for j := 0; j < ln(s); j++ {
+    for j := 0; j < len(s); j++ {
        pool := s[j]
        fmt.Println(pool)
     }
