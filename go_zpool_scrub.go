@@ -37,7 +37,6 @@ func main() {
     s := strings.Split(ln[i], " ")
     pool := s[0]
     fmt.Println(pool)
-    }
   }
   
   print(string(stdout))
