@@ -31,7 +31,7 @@ func main() {
     return
   }
 
-  s := strings.Split(string(stdout), "/n")
+  s := strings.Split(string(stdout), "\n")
   pool1, pool2 := s[0], s[1]
   print(string(stdout))
   fmt.Println(pool1, pool2)
