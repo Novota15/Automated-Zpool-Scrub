@@ -2,6 +2,7 @@ package main
 
 import (
    "fmt"
+   "strings"
    //"os"
    "os/exec"
    //"bytes"
@@ -33,7 +34,7 @@ func main() {
   s := strings.Split(stdout, "/t")
   pool1, pool2 := s[11], s[22]
   print(string(stdout))
-  fmt.println(pool1, pool2)
+  fmt.Println(pool1, pool2)
   
 
 
