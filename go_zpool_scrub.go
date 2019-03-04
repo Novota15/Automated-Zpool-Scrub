@@ -45,9 +45,9 @@ func Get_zpool_Names() []Pool {
   return pools
 }
 
-func Get_zpool_scan(pools *[]Pool) {
-  for i := 0; i < len(*pools); i++ {
-    cmd1 := exec.Command("bash", "-c", "zpool status " + *pools[i].Name)
+func Get_zpool_scan(pools []Pool) {
+  for i := 0; i < len(pools); i++ {
+    cmd1 := exec.Command("bash", "-c", "zpool status " + pools[i].Name)
 
     stdout1, err1 := cmd1.Output()
 
@@ -57,7 +57,7 @@ func Get_zpool_scan(pools *[]Pool) {
     }
 
     //find the date of last srub and store in Status
-    *pools[i].Scan = string(stdout1)
+    pools[i].Scan = string(stdout1)
     ln := strings.Split(string(stdout1), "\n")
     scan_output := ln[2] //line containing the scrub info
     fmt.Println(scan_output)
@@ -73,7 +73,8 @@ func main() {
   //cmd := exec.Command("bash", "-c", "zpool status")
 
   pools := Get_zpool_Names()
-  Get_zpool_scan(&pools)
+  Get_zpool_scan(pools)
+  fmt.Println(pools[0].Scan)
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
