@@ -12,9 +12,10 @@ import (
 type Pool struct {
   Name string
   Scan string
-  Scrub string
+  Scan_Date int 
 }
 
+//creates Pool struct for each pool and stores in pools list
 func Get_zpool_Names() []Pool {
   cmd := exec.Command("bash", "-c", "zpool list")
 
@@ -39,12 +40,11 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  for _, thing := range pools {
-    fmt.Println(thing.Name)
-  }
+  
   return pools
 }
 
+//gets the scan info for each pool in pools list
 func Get_zpool_scan(pools []Pool) {
   for i := 0; i < len(pools); i++ {
     cmd1 := exec.Command("bash", "-c", "zpool status " + pools[i].Name)
@@ -65,6 +65,16 @@ func Get_zpool_scan(pools []Pool) {
   return
 }
 
+//sort pools list by time of scrubs
+func Sort_zpool_scrubs(pools []Pool) {
+  //parse through scan info to get info about month, day, and year
+  for _, pool := range pools {
+    for _, item := range pool.Scan {
+      fmt.Println(item)
+    }
+  }
+}
+
 func main() {
   //arg0 := "zpool status"
 
@@ -74,7 +84,6 @@ func main() {
 
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
-  fmt.Println(pools[0].Scan)
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
