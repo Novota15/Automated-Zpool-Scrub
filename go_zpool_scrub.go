@@ -93,29 +93,29 @@ func Convert_Date_to_Int(month, day, year string) int {
   date := 0
 
   if month == "Jan" {
-    date := 100
+    date = 100
   } else if month == "Feb" {
-    date := 200
+    date = 200
   } else if month == "Mar" {
-    date := 300
+    date = 300
   } else if month == "Apr" {
-    date := 400
+    date = 400
   } else if month == "May" {
-    date := 500
+    date = 500
   } else if month == "Jun" {
-    date := 600
+    date = 600
   } else if month == "Jul" {
-    date := 700
+    date = 700
   } else if month == "Aug" {
-    date := 800
+    date = 800
   } else if month == "Sep" {
-    date := 900
+    date = 900
   } else if month == "Oct" {
-    date := 1000
+    date = 1000
   } else if month == "Nov" {
-    date := 1100
+    date = 1100
   } else if month == "Dec" {
-    date := 1200
+    date = 1200
   }
 
   d, err := strconv.Atoi(day)
