@@ -7,6 +7,7 @@ import (
    "os/exec"
    //"bytes"
    //"io"
+   "strconv"
 )
 
 type Pool struct {
@@ -117,7 +118,7 @@ func Convert_Date_to_Int(month, day, year string) int {
     date := 1200
   }
 
-  date = date + int(day) + int(year)
+  date = date + strconv.Atoi(day) + strconv.Atoi(year)
 
   return date
 }
