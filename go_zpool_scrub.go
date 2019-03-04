@@ -67,7 +67,7 @@ func Get_zpool_scan(pools []Pool) {
 }
 
 //sort pools list by time of scrubs
-func Sort_zpool_scrubs(pools []Pool) {
+func Get_zpool_Scrub_Date(pools []Pool) {
   //parse through scan info to get info about month, day, and year
   for _, pool := range pools {
     fmt.Println(pool.Name)
@@ -137,7 +137,7 @@ func main() {
 
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
-  Sort_zpool_scrubs(pools)
+  Sort_zpool_Scrub_Date(pools)
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
