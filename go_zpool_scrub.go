@@ -42,7 +42,7 @@ func main() {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-
+  fmt.Println(len(pools))
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
