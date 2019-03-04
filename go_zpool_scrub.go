@@ -59,7 +59,7 @@ func main() {
     pools[i].Status = string(stdout1)
     ln := strings.Split(string(stdout1), "\n")
     scan_output := ln[2]
-    fmt.Println(ln[2])
+    fmt.Println(scan_output)
   }
 
   //print(string(stdout))
