@@ -89,6 +89,7 @@ func Sort_zpool_scrubs(pools []Pool) {
   }
 }
 
+//convert the date string to a single integer
 func Convert_Date_to_Int(month, day, year string) int {
   date := 0
 
