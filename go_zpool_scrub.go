@@ -54,7 +54,7 @@ func main() {
       println(err.Error())
       return
     }
-    fmt.Println(string(stdout))
+    //fmt.Println(string(stdout))
   }
 
   //print(string(stdout))
