@@ -14,7 +14,6 @@ type Pool struct {
   Status string
   Scrub string
 }
-//TO DO: modularize code into separate functions
 
 func Get_zpool_Names() []Pool {
   cmd := exec.Command("bash", "-c", "zpool list")
