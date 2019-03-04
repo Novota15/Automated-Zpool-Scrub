@@ -32,7 +32,7 @@ func main() {
   }
 
   ln := strings.Split(string(stdout), "\n") //split into lines
-  //create array for storing pool structs that has length ln - 1
+  //create array for storing pool structs that has length ln - 2
   pool_size := len(ln) - 2
   pools := make([]Pool, pool_size)
   for i := 1; i < len(ln) - 1; i++ { //iterate thru each line
@@ -42,7 +42,7 @@ func main() {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  fmt.Println(len(pools))
+  
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
@@ -55,8 +55,7 @@ func main() {
       return
     }
     //find the date of last srub and store in Status
-    pools[i].Status = string(stdout)
-    //fmt.Println(string(stdout))
+    fmt.Println(string(stdout))
   }
 
   //print(string(stdout))
