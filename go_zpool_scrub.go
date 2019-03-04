@@ -80,10 +80,15 @@ func Sort_zpool_scrubs(pools []Pool) {
         i = i + 14
         year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
+        Convert_Date_to_Int(month, day, year)
       }
       // fmt.Println(string(item))
     }
   }
+}
+
+func Convert_Date_to_Int(month, day, year string) int {
+  return 5
 }
 
 func main() {
