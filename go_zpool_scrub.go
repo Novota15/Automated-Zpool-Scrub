@@ -71,8 +71,10 @@ func Sort_zpool_scrubs(pools []Pool) {
   for _, pool := range pools {
     fmt.Println(pool.Name)
     for i := 2; i < len(string(pool.Scan)); i++ {
-      if string(pool.Scan[i-2:i]) == "on" {
+      if string(pool.Scan[i-2:i]) == "on" { //date of scrub begins after "on"
         fmt.Println("on")
+        i = i + 8
+        fmt.Println(string(pool.Scan[i-3:i]))
       }
       // fmt.Println(string(item))
     }
