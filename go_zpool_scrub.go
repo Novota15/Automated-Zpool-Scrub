@@ -71,7 +71,7 @@ func Sort_zpool_scrubs(pools []Pool) {
   for _, pool := range pools {
     fmt.Println(pool.Name)
     for i := 0; i < len(string(pool.Scan)); i++ {
-      if string(pool.scan[i-1:i]) == "on" {
+      if string(pool.Scan[i-1:i]) == "on" {
         fmt.Println("on")
       }
       // fmt.Println(string(item))
