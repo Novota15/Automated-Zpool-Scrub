@@ -39,14 +39,14 @@ func main() {
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
     pool := s[0] //name of the pool ->start of each line
-    //fmt.Println(pool)
+    fmt.Println(pool)
     pools[i-1].Name = pool
   }
 
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
-    cmd := exec.Command("bash", "-c", "zpool status", pools[i].Name)
+    cmd := exec.Command("bash", "-c", "zpool", "status", pools[i].Name)
 
     stdout, err := cmd.Output()
 
@@ -54,6 +54,7 @@ func main() {
       println(err.Error())
       return
     }
+    //find the date of last srub and store in Status
     //fmt.Println(string(stdout))
   }
 
