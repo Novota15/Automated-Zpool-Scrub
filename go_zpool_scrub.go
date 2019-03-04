@@ -43,7 +43,7 @@ func Get_zpool_Names() []Pool {
   for _, thing := range pools {
     fmt.Println(thing.Name)
   }
-  return p
+  return pools
 }
 
 func main() {
