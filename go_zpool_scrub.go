@@ -45,7 +45,7 @@ func Get_zpool_Names() []Pool {
   return pools
 }
 
-func Get_zpool_scan(pools *[]Pool) {
+func Get_zpool_scan(pools []Pool) {
   for i := 0; i < len(pools); i++ {
     cmd1 := exec.Command("bash", "-c", "zpool status " + pools[i].Name)
 
