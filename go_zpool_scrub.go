@@ -55,6 +55,7 @@ func main() {
       return
     }
     //find the date of last srub and store in Status
+    pools[i].Status = string(stdout)
     //fmt.Println(string(stdout))
   }
 
