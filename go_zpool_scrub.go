@@ -3,7 +3,7 @@ package main
 import (
    "fmt"
    "strings"
-   "os"
+   //"os"
    "os/exec"
    //"bytes"
    //"io"
@@ -21,9 +21,12 @@ func Get_zpool_Names() []Pool {
 
   stdout, err := cmd.Output()
 
+  p := make([]Pool, 5)
+
   if err != nil {
+    fmt.Println("Not Working")
     println(err.Error())
-    return
+    return p
   }
 
   ln := strings.Split(string(stdout), "\n") //split into lines
@@ -37,7 +40,6 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  p := make([]Pool, 5)
   return p
 }
 
