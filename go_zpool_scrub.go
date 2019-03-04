@@ -84,6 +84,7 @@ func main() {
 
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
+  Sort_zpool_scrubs(pools)
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
