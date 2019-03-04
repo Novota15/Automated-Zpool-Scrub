@@ -74,7 +74,12 @@ func Sort_zpool_scrubs(pools []Pool) {
       if string(pool.Scan[i-2:i]) == "on" { //date of scrub begins after "on"
         fmt.Println("on")
         i = i + 8
-        fmt.Println(string(pool.Scan[i-3:i]))
+        month := string(pool.Scan[i-3:i])
+        i = i + 3
+        day := string(pool.Scan[i-2:i])
+        i = i + 14
+        year := string(pool.Scan[i-4])
+        fmt.Println(month, day, year)
       }
       // fmt.Println(string(item))
     }
