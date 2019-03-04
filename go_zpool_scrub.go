@@ -37,7 +37,7 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  p := []Pool{Name: "zpool"}
+  p := []Pool{{Name: "zpool"}, {Name: "zpool2"}}
   return p
   //return pools
 }
