@@ -70,8 +70,8 @@ func Sort_zpool_scrubs(pools []Pool) {
   //parse through scan info to get info about month, day, and year
   for _, pool := range pools {
     fmt.Println(pool.Name)
-    for i := 1; i < len(string(pool.Scan)); i++ {
-      if string(pool.Scan[i-1:i]) == "on" {
+    for i := 2; i < len(string(pool.Scan)); i++ {
+      if string(pool.Scan[i-2:i]) == "on" {
         fmt.Println("on")
       }
       // fmt.Println(string(item))
