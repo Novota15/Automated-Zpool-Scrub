@@ -37,7 +37,7 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  
+  pools := make([]Pool, 5)
   return pools
 }
 
