@@ -58,7 +58,7 @@ func main() {
     fmt.Println(string(stdout))
   }
   fmt.Println("testing zpool status command below: ")
-  cmd1 := exec.Command("bash", "-c", "zpool status", pools[1].Name)
+  cmd1 := exec.Command("bash", "-c", "zpool status" +  pools[1].Name)
   stdout1, err1 := cmd1.Output()
 
   if err1 != nil {
