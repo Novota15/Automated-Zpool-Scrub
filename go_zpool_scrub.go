@@ -80,7 +80,8 @@ func Sort_zpool_scrubs(pools []Pool) {
         i = i + 14
         year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
-        Convert_Date_to_Int(month, day, year)
+        pool.Scan_Date = Convert_Date_to_Int(month, day, year)
+        fmt.Println(pool.Scan_Date)
       }
       // fmt.Println(string(item))
     }
@@ -88,7 +89,37 @@ func Sort_zpool_scrubs(pools []Pool) {
 }
 
 func Convert_Date_to_Int(month, day, year string) int {
-  return 5
+  date := 0
+
+  if month == "Jan" {
+    date := 100
+  } else if month == "Feb" {
+    date := 200
+  } else if month == "Mar" {
+    date := 300
+  } else if month == "Apr" {
+    date := 400
+  } else if month == "May" {
+    date := 500
+  } else if month == "Jun" {
+    date := 600
+  } else if month == "Jul" {
+    date := 700
+  } else if month == "Aug" {
+    date := 800
+  } else if month == "Sep" {
+    date := 900
+  } else if month == "Oct" {
+    date := 1000
+  } else if month == "Nov" {
+    date := 1100
+  } else if month == "Dec" {
+    date := 1200
+  }
+
+  date = date + int(day) + int(year)
+
+  return date
 }
 
 func main() {
