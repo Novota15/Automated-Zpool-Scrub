@@ -40,6 +40,9 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
+  for _, thing := range pools {
+    fmt.Println(thing.Name)
+  }
   return p
 }
 
