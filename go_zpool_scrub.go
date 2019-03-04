@@ -37,9 +37,9 @@ func Get_zpool_Names() []Pool {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-
-  return p := []Pool{Name: "zpool"}
-  return pools
+  p := []Pool{Name: "zpool"}
+  return p
+  //return pools
 }
 
 func main() {
