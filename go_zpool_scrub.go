@@ -53,7 +53,7 @@ func main() {
     if err != nil {
       println(err.Error())
       return
-
+    }
     fmt.Println(string(stdout))
   }
 
