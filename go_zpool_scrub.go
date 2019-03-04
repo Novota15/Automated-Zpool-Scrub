@@ -120,8 +120,10 @@ func Convert_Date_to_Int(month, day, year string) int {
 
   d, err := strconv.Atoi(day)
   y, err1 := strconv.Atoi(year)
-  date = date + d + y
-
+  if err == nil && err1 == nil {
+    date = date + d + y
+  }
+  
   return date
 }
 
