@@ -12,6 +12,7 @@ import (
 type Pool struct {
   Name string
   Status string
+  Scrub string
 }
 //TO DO: modularize code into separate functions
 
@@ -46,27 +47,20 @@ func main() {
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
-    cmd := exec.Command("bash", "-c", "zpool status", pools[i].Name)
+    cmd1 = exec.Command("bash", "-c", "zpool status " + pools[i].Name)
 
-    stdout, err := cmd.Output()
+    stdout1, err1 = cmd1.Output()
 
-    if err != nil {
-      println(err.Error())
+    if err1 != nil {
+      println(err1.Error())
       return
     }
     //find the date of last srub and store in Status
-    fmt.Println(string(stdout))
+    pools[i].Status = string(stdout1)
+    ln = strings.Split(string(stdout1), "\n")
+    scan_output = ln[2]
+    fmt.println(ln[2])
   }
-  fmt.Println("testing zpool status command below: ")
-  cmd1 := exec.Command("bash", "-c", "zpool status " +  pools[1].Name)
-  stdout1, err1 := cmd1.Output()
-
-  if err1 != nil {
-    println(err1.Error())
-    return
-  }
-
-  fmt.Println(string(stdout1))
 
   //print(string(stdout))
   
