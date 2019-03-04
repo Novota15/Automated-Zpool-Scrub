@@ -37,7 +37,7 @@ func Get_zpool_Names() {
     fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  return pools
+  return &pools
 }
 
 func main() {
@@ -47,7 +47,7 @@ func main() {
 
   //cmd := exec.Command("bash", "-c", "zpool status")
 
-  pools := Get_zpool_Names()
+  *pools := Get_zpool_Names()
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
