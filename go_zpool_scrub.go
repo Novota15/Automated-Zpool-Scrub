@@ -16,7 +16,7 @@ type Pool struct {
 }
 //TO DO: modularize code into separate functions
 
-func Get_zpool_Names() []Pool {
+func Get_zpool_Names() ([]Pool) {
   cmd := exec.Command("bash", "-c", "zpool list")
 
   stdout, err := cmd.Output()
