@@ -1,7 +1,7 @@
 package main
 
 import (
-   //"fmt"
+   "fmt"
    "strings"
    //"os"
    "os/exec"
@@ -64,7 +64,7 @@ func main() {
     pools[i].Status = string(stdout1)
     ln := strings.Split(string(stdout1), "\n")
     scan_output := ln[2] //line containing the scrub info
-    //fmt.Println(scan_output)
+    fmt.Println(scan_output)
   }
 
   //print(string(stdout))
