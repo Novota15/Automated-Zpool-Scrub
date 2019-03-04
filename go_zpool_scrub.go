@@ -39,13 +39,14 @@ func main() {
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
     pool := s[0] //name of the pool ->start of each line
-    fmt.Println(pool)
+    //fmt.Println(pool)
     pools[i-1].Name = pool
   }
-  
+  for i := 0; i < len(pools); i++ {
+    fmt.Println(pools[i].Name)
+  }
   //print(string(stdout))
   
-
 
 }
 
