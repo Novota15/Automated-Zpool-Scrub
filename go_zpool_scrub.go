@@ -69,8 +69,9 @@ func Get_zpool_scan(pools []Pool) {
 func Sort_zpool_scrubs(pools []Pool) {
   //parse through scan info to get info about month, day, and year
   for _, pool := range pools {
+    fmt.Println(pool.Name)
     for _, item := range pool.Scan {
-      fmt.Println(item)
+      fmt.Println(string(item))
     }
   }
 }
