@@ -12,8 +12,8 @@ import (
 type Pool struct {
   Name string
   Status string
-
 }
+//TO DO: modularize code into separate functions
 
 func main() {
   //arg0 := "zpool status"
@@ -42,9 +42,21 @@ func main() {
     //fmt.Println(pool)
     pools[i-1].Name = pool
   }
+
+  //call zpool status on each pool and store status in pool struct
+
   for i := 0; i < len(pools); i++ {
-    fmt.Println(pools[i].Name)
+    cmd := exec.Command("bash", "-c", "zpool status", pools[i].Name)
+
+    stdout, err := cmd.Output()
+
+    if err != nil {
+      println(err.Error())
+      return
+
+    fmt.Println(string(stdout))
   }
+
   //print(string(stdout))
   
 
