@@ -47,9 +47,9 @@ func main() {
   //call zpool status on each pool and store status in pool struct
 
   for i := 0; i < len(pools); i++ {
-    cmd1 = exec.Command("bash", "-c", "zpool status " + pools[i].Name)
+    cmd1 := exec.Command("bash", "-c", "zpool status " + pools[i].Name)
 
-    stdout1, err1 = cmd1.Output()
+    stdout1, err1 := cmd1.Output()
 
     if err1 != nil {
       println(err1.Error())
@@ -57,8 +57,8 @@ func main() {
     }
     //find the date of last srub and store in Status
     pools[i].Status = string(stdout1)
-    ln = strings.Split(string(stdout1), "\n")
-    scan_output = ln[2]
+    ln := strings.Split(string(stdout1), "\n")
+    scan_output := ln[2]
     fmt.println(ln[2])
   }
 
