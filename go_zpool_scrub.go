@@ -57,6 +57,9 @@ func main() {
     //find the date of last srub and store in Status
     fmt.Println(string(stdout))
   }
+  fmt.Println("testing zpool status command below: ")
+  cmd := exec.Command("bash", "-c", "zpool status", pools[1].Name)
+  fmt.println(string(stdout))
 
   //print(string(stdout))
   
