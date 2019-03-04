@@ -78,7 +78,7 @@ func Sort_zpool_scrubs(pools []Pool) {
         i = i + 3
         day := string(pool.Scan[i-2:i])
         i = i + 14
-        year := string(pool.Scan[i-4])
+        year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
       }
       // fmt.Println(string(item))
