@@ -1,18 +1,11 @@
 package main
 
-//TO DO: Add sorting algorithmm
-
-
 import (
    "fmt"
    "strings"
-   //"os"
    "os/exec"
-   //"bytes"
-   //"io"
    "strconv"
    "time"
-   //"parseany"
 )
 
 type Pool struct {
