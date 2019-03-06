@@ -152,7 +152,7 @@ func Perform_Scrub(pool Pool) {
   stdout, err := cmd.Output()
 
     if err != nil {
-      println(err1.Error())
+      println(err.Error())
       return
     }
   fmt.Println("ran scrub on " + pool.Name)
