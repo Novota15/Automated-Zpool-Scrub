@@ -20,7 +20,7 @@ write ```sudo crontab -e```
 edit the crontab:
 1) press ```esc```
 2) press ```i``` to begin editing the file
-3) paste cron command into the file
+3) paste cron command into the file.
 Example for running at 1 am every day: 
 ```0 1 * * * /usr/local/go/bin /home/student/go-zpool-scrub/go_zpool_scrub.go > /dev/null 2>&1```
 4) press ```esc``` again to exit editing mode
