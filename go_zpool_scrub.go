@@ -149,7 +149,7 @@ func Find_Oldest_Scrub(pools []Pool) int{
 func Perform_Scrub(pool Pool) {
   cmd := exec.Command("bash", "-c", "zpool scrub" + pool.Name)
 
-  stdout, err := cmd.Output()
+  _, err := cmd.Output()
 
     if err != nil {
       println(err.Error())
