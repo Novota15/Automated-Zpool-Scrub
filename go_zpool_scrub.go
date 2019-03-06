@@ -101,6 +101,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
       // fmt.Println(string(item))
     }
   }
+  return
 }
 
 // func swap(a Pool, b Pool) {
