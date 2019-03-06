@@ -146,6 +146,10 @@ func Find_Oldest_Scrub(pools []Pool) int{
   return j
 }
 
+func Perform_Scrub(pool Pool) {
+  cmd := exec.Command("bash", "-c", "zpool scrub" + pool.Name)
+}
+
 func main() {
   //arg0 := "zpool status"
 
@@ -159,5 +163,6 @@ func main() {
   j := Find_Oldest_Scrub(pools)
   fmt.Println("Oldest Scrub:")
   fmt.Println(pools[j])
+  Perform_Scrub(pools[j])
 }
 
