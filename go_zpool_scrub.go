@@ -10,7 +10,7 @@ import (
    "os/exec"
    //"bytes"
    //"io"
-   //"strconv"
+   "strconv"
    "time"
    //"parseany"
 )
@@ -84,6 +84,11 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         month := string(pool.Scan[i-3:i])
         i = i + 3
         day := string(pool.Scan[i-2:i])
+        //add 0 to the day if day < 10
+        x, _ := strconv(day)
+        if x < 10 {
+          day = "0" + string(pool.Scan[i-1:i])
+        }
         i = i + 14
         year := string(pool.Scan[i-4:i])
         //fmt.Println(month, day, year)
