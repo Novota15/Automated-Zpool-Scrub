@@ -135,14 +135,14 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 //   }
 // }
 
+//returns the index of the pool with the oldest scrub
 func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
   for i := 1; i < len(pools); i++ {
-    if pools[j].Scan_Date.Before(pools[i].Scan_Date) {
+    if pools[j].Scan_Date.After(pools[i].Scan_Date) {
       j = i
     }
   }
-  fmt.Println(pools[j].Name)
   return j
 }
 
@@ -159,9 +159,5 @@ func main() {
   j := Find_Oldest_Scrub(pools)
   fmt.Println("Oldest Scrub:")
   fmt.Println(pools[j])
-  //now := time.Now()
-  //fmt.Println(now)
-  //call zpool status on each pool and store status in pool struct
-  //print(string(stdout))
 }
 
