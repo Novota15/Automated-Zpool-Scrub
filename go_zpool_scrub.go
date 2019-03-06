@@ -147,7 +147,7 @@ func Find_Oldest_Scrub(pools []Pool) int{
 }
 
 func Perform_Scrub(pool Pool) {
-  cmd := exec.Command("bash", "-c", "sudo zpool scrub" + pool.Name)
+  cmd := exec.Command("bash", "-c", "sudo zpool scrub " + pool.Name)
 
   _, err := cmd.Output()
 
