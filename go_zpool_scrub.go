@@ -74,6 +74,7 @@ func Get_zpool_scan(pools []Pool) {
 //sort pools list by time of scrubs
 func Get_zpool_Scrub_Date(pools []Pool) {
   //parse through scan info to get info about month, day, and year
+  const shortForm = "2006-Jan-02"
   for _, pool := range pools {
     fmt.Println(pool.Name)
     for i := 2; i < len(string(pool.Scan)); i++ {
