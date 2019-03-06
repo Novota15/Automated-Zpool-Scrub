@@ -43,7 +43,7 @@ func Get_zpool_Names() []Pool {
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
     pool := s[0] //name of the pool ->start of each line
-    fmt.Println(pool)
+    //fmt.Println(pool)
     pools[i-1].Name = pool
   }
   
@@ -65,7 +65,7 @@ func Get_zpool_scan(pools []Pool) {
     //find the date of last srub and store in Status
     ln := strings.Split(string(stdout1), "\n")
     scan_output := ln[2] //line containing the scrub info
-    fmt.Println(scan_output)
+    //fmt.Println(scan_output)
     pools[i].Scan = scan_output
   }
   return
