@@ -75,28 +75,28 @@ func Get_zpool_scan(pools []Pool) {
 func Get_zpool_Scrub_Date(pools []Pool) {
   //parse through scan info to get info about month, day, and year
   const shortForm = "2006-Jan-02"
-  for i := 0, i < len(pools); i++ {
-    fmt.Println(pools[i].Name)
-    for i := 2; i < len(string(pools[i].Scan)); i++ {
-      if string(pools[i].Scan[i-2:i]) == "on" { //date of scrub begins after "on"
+  for k := 0, k < len(pools); k++ {
+    fmt.Println(pools[k].Name)
+    for i := 2; i < len(string(pools[k].Scan)); i++ {
+      if string(pools[k].Scan[i-2:i]) == "on" { //date of scrub begins after "on"
         //fmt.Println("on")
         i = i + 8
-        month := string(pools[i].Scan[i-3:i])
+        month := string(pools[k].Scan[i-3:i])
         i = i + 3
-        day := string(pools[i].Scan[i-2:i])
+        day := string(pools[k].Scan[i-2:i])
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
         if x < 10 {
-          day = "0" + string(pools[i].Scan[i-1:i])
+          day = "0" + string(pools[k].Scan[i-1:i])
         }
         i = i + 14
-        year := string(pools[i].Scan[i-4:i])
+        year := string(pools[k].Scan[i-4:i])
         //fmt.Println(month, day, year)
         date := year + "-" + month + "-" + day
         t, _ := time.Parse(shortForm, date)
         pools[i].Scan_Date = t
         //fmt.Println(t)
-        fmt.Println(pools[i].Scan_Date)
+        fmt.Println(pools[k].Scan_Date)
       }
       // fmt.Println(string(item))
     }
