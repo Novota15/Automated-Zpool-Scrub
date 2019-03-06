@@ -88,9 +88,9 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
         date := year + "-" + month + "-" + day
-        t, _ := time.Parse(shortForm, date)
-        fmt.Println(t)
-        pool.Scan_Date = Convert_Date_to_Int(month, day, year)
+        pool.Scan_Date, _ = time.Parse(shortForm, date)
+        //fmt.Println(t)
+        //pool.Scan_Date = Convert_Date_to_Int(month, day, year)
         fmt.Println(pool.Scan_Date)
       }
       // fmt.Println(string(item))
@@ -105,43 +105,43 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 // }
 
 //convert the date string to a single integer
-func Convert_Date_to_Int(month, day, year string) int {
-  date := 0
+// func Convert_Date_to_Int(month, day, year string) int {
+//   date := 0
 
-  if month == "Jan" {
-    date = 100
-  } else if month == "Feb" {
-    date = 200
-  } else if month == "Mar" {
-    date = 300
-  } else if month == "Apr" {
-    date = 400
-  } else if month == "May" {
-    date = 500
-  } else if month == "Jun" {
-    date = 600
-  } else if month == "Jul" {
-    date = 700
-  } else if month == "Aug" {
-    date = 800
-  } else if month == "Sep" {
-    date = 900
-  } else if month == "Oct" {
-    date = 1000
-  } else if month == "Nov" {
-    date = 1100
-  } else if month == "Dec" {
-    date = 1200
-  }
+//   if month == "Jan" {
+//     date = 100
+//   } else if month == "Feb" {
+//     date = 200
+//   } else if month == "Mar" {
+//     date = 300
+//   } else if month == "Apr" {
+//     date = 400
+//   } else if month == "May" {
+//     date = 500
+//   } else if month == "Jun" {
+//     date = 600
+//   } else if month == "Jul" {
+//     date = 700
+//   } else if month == "Aug" {
+//     date = 800
+//   } else if month == "Sep" {
+//     date = 900
+//   } else if month == "Oct" {
+//     date = 1000
+//   } else if month == "Nov" {
+//     date = 1100
+//   } else if month == "Dec" {
+//     date = 1200
+//   }
 
-  d, err := strconv.Atoi(day)
-  y, err1 := strconv.Atoi(year)
-  if err == nil && err1 == nil {
-    date = date + d + y
-  }
+//   d, err := strconv.Atoi(day)
+//   y, err1 := strconv.Atoi(year)
+//   if err == nil && err1 == nil {
+//     date = date + d + y
+//   }
   
-  return date
-}
+//   return date
+// }
 
 func main() {
   //arg0 := "zpool status"
