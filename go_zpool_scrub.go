@@ -10,7 +10,7 @@ import (
    "os/exec"
    //"bytes"
    //"io"
-   "strconv"
+   //"strconv"
    "time"
    //"parseany"
 )
@@ -18,7 +18,7 @@ import (
 type Pool struct {
   Name string
   Scan string
-  Scan_Date int 
+  Scan_Date string 
 }
 
 //creates Pool struct for each pool and stores in pools list
