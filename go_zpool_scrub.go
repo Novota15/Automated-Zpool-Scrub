@@ -18,7 +18,7 @@ import (
 type Pool struct {
   Name string
   Scan string
-  Scan_Date string 
+  Scan_Date time.Time 
 }
 
 //creates Pool struct for each pool and stores in pools list
