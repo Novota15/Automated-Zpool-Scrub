@@ -88,7 +88,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
         date := year + "-" + month + "-" + day
-        t, _ = time.Parse(shortForm, date)
+        t, _ := time.Parse(shortForm, date)
         pool.Scan_Date = t
         //fmt.Println(t)
         //pool.Scan_Date = Convert_Date_to_Int(month, day, year)
