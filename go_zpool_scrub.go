@@ -1,5 +1,8 @@
 package main
 
+//TO DO: Add sorting algorithmm
+
+
 import (
    "fmt"
    "strings"
@@ -8,6 +11,7 @@ import (
    //"bytes"
    //"io"
    "strconv"
+   "time"
 )
 
 type Pool struct {
@@ -138,6 +142,7 @@ func main() {
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
   Sort_zpool_Scrub_Date(pools)
+  print(Now())
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
