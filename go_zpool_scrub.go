@@ -86,6 +86,9 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         i = i + 14
         year := string(pool.Scan[i-4:i])
         fmt.Println(month, day, year)
+        date := year + "-" + month + "-" + day
+        t, _ = time.Parse(shortForm, date)
+        fmt.Println(t)
         pool.Scan_Date = Convert_Date_to_Int(month, day, year)
         fmt.Println(pool.Scan_Date)
       }
@@ -150,7 +153,7 @@ func main() {
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
   now := time.Now()
-  fmt.Println(now)
+  //fmt.Println(now)
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
