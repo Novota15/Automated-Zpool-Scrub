@@ -137,7 +137,7 @@ func Find_Oldest_Scrub(pools []Pool) int{
       j = i
     }
   }
-  fmt.Println(pool[j].Name)
+  fmt.Println(pools[j].Name)
   return j
 }
 
