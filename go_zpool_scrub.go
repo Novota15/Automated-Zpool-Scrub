@@ -72,7 +72,7 @@ func Get_zpool_scan(pools []Pool) {
 }
 
 //sort pools list by time of scrubs
-func Get_zpool_Scrub_Date(pools []Pool) {
+func Get_zpool_Scrub_Date(pools []Pool) []Pool{
   //parse through scan info to get info about month, day, and year
   const shortForm = "2006-Jan-02"
   for _, pool := range pools {
@@ -101,7 +101,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
       // fmt.Println(string(item))
     }
   }
-  return
+  return pools
 }
 
 // func swap(a Pool, b Pool) {
@@ -157,7 +157,7 @@ func main() {
 
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
-  Get_zpool_Scrub_Date(pools)
+  pools = Get_zpool_Scrub_Date(pools)
   j := Find_Oldest_Scrub(pools)
   fmt.Println(j)
   //now := time.Now()
