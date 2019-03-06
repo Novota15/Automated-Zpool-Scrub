@@ -128,11 +128,17 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 //   }
 // }
 
-// func Sort_by_Date(pools []Pool) {
-//   for _, pool := range pools {
-
-//   }
-// }
+func Sort_by_Date(pools []Pool) int{
+  j := 0
+  for i := 1, i < len(pools); i++ {
+    t1 := time.Date(pool[j].Scan_Date)
+    t2 := time.Date(pool[i].Scan_Date)
+    if t1.After(t2) {
+      j = i
+    }
+  }
+  return j
+}
 
 func main() {
   //arg0 := "zpool status"
@@ -144,7 +150,7 @@ func main() {
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
-  //Sort_by_Date(pools)
+  j := Sort_by_Date(pools)
   //now := time.Now()
   //fmt.Println(now)
   //call zpool status on each pool and store status in pool struct
