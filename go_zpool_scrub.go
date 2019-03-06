@@ -96,13 +96,13 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         t, _ := time.Parse(shortForm, date)
         pools[k].Scan_Date = t
         //fmt.Println(t)
-        fmt.Println(pools[k].Scan_Date)
+        //fmt.Println(pools[k].Scan_Date)
       }
       // fmt.Println(string(item))
     }
   }
-  fmt.Println("here:")
-  fmt.Println(pools[0].Scan_Date)
+  //fmt.Println("here:")
+  //fmt.Println(pools[0].Scan_Date)
 }
 
 // func swap(a Pool, b Pool) {
@@ -138,14 +138,16 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
   fmt.Println(pools[1].Scan_Date)
-  for i := 1; i < len(pools); i++ {
-    t1 := time.Date(pools[j].Scan_Date)
-    t2 := time.Date(pools[i].Scan_Date)
-    if t1.After(t2) {
-      j = i
-    }
-  }
-  fmt.Println(pools[j].Name)
+  fmt.Println(pools[1].Scan_Date.year)
+  fmt.Println(pools[1].Scan_Date.month)
+  // for i := 1; i < len(pools); i++ {
+  //   t1 := time.Date(pools[j].Scan_Date)
+  //   t2 := time.Date(pools[i].Scan_Date)
+  //   if t1.After(t2) {
+  //     j = i
+  //   }
+  // }
+  // fmt.Println(pools[j].Name)
   return j
 }
 
