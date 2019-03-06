@@ -98,7 +98,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   }
 }
 
-func swap(a *Pool, b *Pool) {
+func swap(a Pool, b Pool) {
   temp = *a
   *a = *b
   *b = temp
