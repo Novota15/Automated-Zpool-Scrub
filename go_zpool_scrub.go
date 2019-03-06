@@ -153,6 +153,7 @@ func main() {
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
   j := Find_Oldest_Scrub(pools)
+  fmt.Println(j)
   //now := time.Now()
   //fmt.Println(now)
   //call zpool status on each pool and store status in pool struct
