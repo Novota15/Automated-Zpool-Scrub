@@ -128,7 +128,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 //   }
 // }
 
-func Sort_by_Date(pools []Pool) int{
+func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
   for i := 1, i < len(pools); i++ {
     t1 := time.Date(pool[j].Scan_Date)
@@ -137,6 +137,7 @@ func Sort_by_Date(pools []Pool) int{
       j = i
     }
   }
+  fmt.Println(pool[j].Name)
   return j
 }
 
@@ -150,7 +151,7 @@ func main() {
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
-  j := Sort_by_Date(pools)
+  j := Find_Oldest_Scrub(pools)
   //now := time.Now()
   //fmt.Println(now)
   //call zpool status on each pool and store status in pool struct
