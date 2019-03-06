@@ -12,7 +12,7 @@ import (
    //"io"
    "strconv"
    "time"
-   "parseany"
+   //"parseany"
 )
 
 type Pool struct {
@@ -71,34 +71,34 @@ func Get_zpool_scan(pools []Pool) {
   return
 }
 
-// //sort pools list by time of scrubs
-// func Get_zpool_Scrub_Date(pools []Pool) {
-//   //parse through scan info to get info about month, day, and year
-//   for _, pool := range pools {
-//     fmt.Println(pool.Name)
-//     for i := 2; i < len(string(pool.Scan)); i++ {
-//       if string(pool.Scan[i-2:i]) == "on" { //date of scrub begins after "on"
-//         fmt.Println("on")
-//         i = i + 8
-//         month := string(pool.Scan[i-3:i])
-//         i = i + 3
-//         day := string(pool.Scan[i-2:i])
-//         i = i + 14
-//         year := string(pool.Scan[i-4:i])
-//         fmt.Println(month, day, year)
-//         pool.Scan_Date = Convert_Date_to_Int(month, day, year)
-//         fmt.Println(pool.Scan_Date)
-//       }
-//       // fmt.Println(string(item))
-//     }
-//   }
-// }
-
+//sort pools list by time of scrubs
 func Get_zpool_Scrub_Date(pools []Pool) {
+  //parse through scan info to get info about month, day, and year
   for _, pool := range pools {
-    layout, err := dateparse.ParseFormat(string(pool.Scan)
+    fmt.Println(pool.Name)
+    for i := 2; i < len(string(pool.Scan)); i++ {
+      if string(pool.Scan[i-2:i]) == "on" { //date of scrub begins after "on"
+        fmt.Println("on")
+        i = i + 8
+        month := string(pool.Scan[i-3:i])
+        i = i + 3
+        day := string(pool.Scan[i-2:i])
+        i = i + 14
+        year := string(pool.Scan[i-4:i])
+        fmt.Println(month, day, year)
+        pool.Scan_Date = Convert_Date_to_Int(month, day, year)
+        fmt.Println(pool.Scan_Date)
+      }
+      // fmt.Println(string(item))
+    }
   }
 }
+
+// func Get_zpool_Scrub_Date(pools []Pool) {
+//   for _, pool := range pools {
+//     layout, err := dateparse.ParseFormat(string(pool.Scan)
+//   }
+// }
 
 //convert the date string to a single integer
 func Convert_Date_to_Int(month, day, year string) int {
@@ -149,7 +149,7 @@ func main() {
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
-  //print(time.Now())
+  print(string(time.Now()))
   //call zpool status on each pool and store status in pool struct
   //print(string(stdout))
   
