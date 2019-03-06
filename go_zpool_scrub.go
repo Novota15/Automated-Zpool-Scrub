@@ -85,7 +85,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         i = i + 3
         day := string(pool.Scan[i-2:i])
         //add 0 to the day if day < 10
-        x, _ := strconv(day)
+        x, _ := strconv.Atoi(day)
         if x < 10 {
           day = "0" + string(pool.Scan[i-1:i])
         }
