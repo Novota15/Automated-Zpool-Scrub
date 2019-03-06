@@ -130,7 +130,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 
 func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
-  for i := 1, i < len(pools); i++ {
+  for i := 1; i < len(pools); i++ {
     t1 := time.Date(pool[j].Scan_Date)
     t2 := time.Date(pool[i].Scan_Date)
     if t1.After(t2) {
