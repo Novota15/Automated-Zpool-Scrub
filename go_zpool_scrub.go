@@ -101,6 +101,8 @@ func Get_zpool_Scrub_Date(pools []Pool) []Pool{
       // fmt.Println(string(item))
     }
   }
+  fmt.Println("here:")
+  fmt.Println(pools[0].Scan_Date)
   return pools
 }
 
@@ -157,7 +159,7 @@ func main() {
 
   pools := Get_zpool_Names()
   Get_zpool_scan(pools)
-  pools = Get_zpool_Scrub_Date(pools)
+  Get_zpool_Scrub_Date(pools)
   j := Find_Oldest_Scrub(pools)
   fmt.Println(j)
   //now := time.Now()
