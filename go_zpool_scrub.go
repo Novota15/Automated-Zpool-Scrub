@@ -105,36 +105,6 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   //fmt.Println(pools[0].Scan_Date)
 }
 
-// func swap(a Pool, b Pool) {
-//   temp = *a
-//   *a = *b
-//   *b = temp
-// }
-
-// func partition(pools []Pool, low int, high int) int{
-//   pivot := pools[high]
-//   i := low - 1
-
-//   for j := low; j <= high - 1; j++ {
-//     if time.Date(pools[j].Scan_Date).After(time.Date(pivot.Scan_Date)) {
-//       i++
-//       swap(pools[i], pools[j])
-//     }
-//   }
-//   swap(pools[i+1], pools[high])
-//   return (i+1)
-// }
-
-// func Sort_by_Date(pools []Pool, low int, high int) { //quicksort algorithm
-//   t1 := time.Date(pools[low].Scan_Date)
-//   t2 := time.Date(pools[high].Scan_Date)
-//   if t1.After(t2) {
-//     pi := partition(pools, low, high)
-//     Sort_by_Date(pools, low, pi - 1)
-//     Sort_by_Date(pools, pi + 1, high)
-//   }
-// }
-
 //returns the index of the pool with the oldest scrub
 func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
