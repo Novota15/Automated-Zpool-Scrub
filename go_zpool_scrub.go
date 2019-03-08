@@ -11,7 +11,8 @@ import (
 type Pool struct {
   Name string
   Scan string
-  Scan_Date time.Time 
+  Scan_Date time.Time
+  Scanned bool
 }
 
 //creates Pool struct for each pool and stores in pools list
@@ -71,8 +72,9 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   for k := 0; k < len(pools); k++ {
     fmt.Println(pools[k].Name)
     for i := 2; i < len(string(pools[k].Scan)); i++ {
-      if string(pools[k].Scan[i-2:i]) == "on" { //date of scrub begins after "on"
+      if string(pools[k].Scan[i-2:i]) == "on" && string(pools[k].Scan[i:i+1] == " ") //date of scrub begins after "on"
         //fmt.Println("on")
+        pools[k].Scanned = true
         i = i + 8
         month := string(pools[k].Scan[i-3:i])
         i = i + 3
@@ -92,6 +94,10 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         //fmt.Println(pools[k].Scan_Date)
       }
       // fmt.Println(string(item))
+      else {
+        fmt.Println(pools[k].Name + " hasn't been scrubbed")
+        pools[k].Scanned = false
+      }
     }
   }
   //fmt.Println("here:")
@@ -130,10 +136,16 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 
 //returns the index of the pool with the oldest scrub
 func Find_Oldest_Scrub(pools []Pool) int{
-  j := 0
+  for j := 0; j < len(pools); j++ {
+    if pools[j].Scanned == true {
+      break
+    }
+  }
   for i := 1; i < len(pools); i++ {
-    if pools[j].Scan_Date.After(pools[i].Scan_Date) {
+    if pools[i].Scanned == true {
+      if pools[j].Scan_Date.After(pools[i].Scan_Date) {
       j = i
+      }
     }
   }
   return j
