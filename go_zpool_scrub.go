@@ -18,7 +18,8 @@ type Pool struct {
 
 //creates Pool struct for each pool and stores in pools list
 func Get_zpool_Names() []Pool {
-  cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
+  cmd := exec.Command("bash", "-c", "zpool list")
+  //cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
 
   stdout, err := cmd.Output()
 
