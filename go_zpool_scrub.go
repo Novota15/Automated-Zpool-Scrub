@@ -149,6 +149,8 @@ func Scrub_Least_Recent(pools []Pool) {
 
 func main() {
   pools := Get_zpool_Names()
+  fmt.Println("length of pools list")
+  fmt.Println(len(pools))
   Scrub_Least_Recent(pools)
 }
 
