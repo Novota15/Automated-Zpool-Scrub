@@ -10,15 +10,15 @@ import (
 
 type Pool struct {
   Name string
+  State string
   Scan string
   Scan_Date time.Time
   Scanned bool
-  State string
 }
 
 //creates Pool struct for each pool and stores in pools list
 func Get_zpool_Names() []Pool {
-  cmd := exec.Command("bash", "-c", "zpool list")
+  cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
 
   stdout, err := cmd.Output()
 
@@ -38,9 +38,12 @@ func Get_zpool_Names() []Pool {
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
     pool := s[0] //name of the pool ->start of each line
-    //fmt.Println(pool)
+    health := s[1]
+    fmt.Println(pool)
+    fmt.Println(health)
     pools[i-1].Name = pool
     pools[i-1].Scanned = false
+    pools[i-1].State = health
   }
   
   return pools
