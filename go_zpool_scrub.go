@@ -50,6 +50,36 @@ func Get_zpool_Names() []Pool {
   return pools
 }
 
+func Get_zpools() []Pool {
+  cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
+  stdout, err := cmd.Output()
+
+  p := make([]Pool, 5)
+
+  if err != nil {
+    fmt.Println("Not Working")
+    println(err.Error())
+    return p
+  }
+
+  ln := strings.Split(string(stdout), "\n") //split into lines
+
+  pool_size := len(ln)
+  pools := make([]Pool, pool_size)
+
+  fmt.Println("creating pool list: ")
+  for i := 0; i < len(ln); i++ {
+    data := strings.Split(ln[i])
+    pool_name := data[0]
+    pool_health := data[1]
+    pools[i].Name = pool_size
+    pools[i].Scanned = false
+    pools[i].State = health
+    fmt.Println(pools[i])
+  }
+
+}
+
 //gets the scan info for each pool in pools list
 func Get_zpool_scan(pools []Pool) {
   for i := 0; i < len(pools); i++ {
@@ -167,7 +197,7 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 func main() {
-  pools := Get_zpool_Names()
+  pools := Get_zpools()
   Scrub_Least_Recent(pools)
 }
 
