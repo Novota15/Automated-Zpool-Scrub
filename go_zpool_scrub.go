@@ -77,16 +77,16 @@ func Get_zpool_Scrub_Date(pools []Pool) {
       if string(pools[k].Scan[i-3:i]) == "on " { //date of scrub begins after "on"
         //fmt.Println("on")
         pools[k].Scanned = true
-        i = i + 8
+        i = i + 7
         month := string(pools[k].Scan[i-3:i])
-        i = i + 3
+        i = i + 2
         day := string(pools[k].Scan[i-2:i])
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
         if x < 10 {
           day = "0" + string(pools[k].Scan[i-1:i])
         }
-        i = i + 14
+        i = i + 13
         year := string(pools[k].Scan[i-4:i])
         //fmt.Println(month, day, year)
         date := year + "-" + month + "-" + day
