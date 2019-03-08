@@ -59,6 +59,7 @@ func Get_zpool_scan(pools []Pool) {
 
     //find the date of last scrub and store in Status
     ln := strings.Split(string(stdout1), "\n")
+
     //find the line with the scan info:
     scan := 0
     for k := 0; k < len(ln); k++ {
@@ -73,7 +74,7 @@ func Get_zpool_scan(pools []Pool) {
     scan_output := ln[scan] //line containing the scrub info
     //fmt.Println(scan_output)
     pools[i].Scan = scan_output
-    fmt.Println(string(pools[i].Scan))
+    //fmt.Println(string(pools[i].Scan))
   }
   return
 }
@@ -124,11 +125,10 @@ func Find_Oldest_Scrub(pools []Pool) int{
       return j
     }
   }
+  //all pools have been scrubbed so time to compare dates
   j = 0
   for i := 1; i < len(pools); i++ { //if all have been scrubbed, find the oldest
     if pools[i].Scanned == true {
-      fmt.Println(pools[j].Scan_Date)
-      fmt.Println(pools[i].Scan_Date)
       if pools[j].Scan_Date.After(pools[i].Scan_Date) {
       j = i
       }
