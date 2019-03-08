@@ -38,12 +38,12 @@ func Get_zpool_Names() []Pool {
     //fmt.Println(ln[i])
     s := strings.Split(ln[i], " ") //split each line
     pool := s[0] //name of the pool ->start of each line
-    health := s[1]
-    fmt.Println(pool)
-    fmt.Println(health)
+    //health := s[1]
+    //fmt.Println(pool)
+    //fmt.Println(health)
     pools[i-1].Name = pool
     pools[i-1].Scanned = false
-    pools[i-1].State = health
+    //pools[i-1].State = health
   }
   
   return pools
