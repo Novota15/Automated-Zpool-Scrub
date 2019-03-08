@@ -77,7 +77,7 @@ func Get_zpools() []Pool {
     pools[i].State = pool_health
     fmt.Println(pools[i])
   }
-
+  return
 }
 
 //gets the scan info for each pool in pools list
