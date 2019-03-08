@@ -64,7 +64,7 @@ func Get_zpools() []Pool {
 
   ln := strings.Split(string(stdout), "\n") //split into lines
 
-  pool_size := len(ln)
+  pool_size := len(ln) - 0
   pools := make([]Pool, pool_size)
 
   fmt.Println("creating pool list: ")
@@ -77,7 +77,7 @@ func Get_zpools() []Pool {
     pools[i].State = pool_health
     fmt.Println(pools[i])
   }
-  return
+  return pools
 }
 
 //gets the scan info for each pool in pools list
