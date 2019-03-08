@@ -115,6 +115,8 @@ func Find_Oldest_Scrub(pools []Pool) int{
   j = 0
   for i := 1; i < len(pools); i++ { //if all have been scrubbed, find the oldest
     if pools[i].Scanned == true {
+      fmt.Println(pools[j].Scan_Date)
+      fmt.Println(pools[i].Scan_Date)
       if pools[j].Scan_Date.Before(pools[i].Scan_Date) {
       j = i
       }
