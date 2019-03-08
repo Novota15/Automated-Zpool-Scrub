@@ -63,7 +63,7 @@ func Get_zpool_scan(pools []Pool) {
     scan := 0
     for k := 0; k < len(ln); k++ {
       line := string(ln[k])
-      for j := 0; j < len(line) - 6); j++ {
+      for j := 0; j < (len(line) - 6); j++ {
         if string(line[j:j+4]) == "scan" {
           scan = j
           break
