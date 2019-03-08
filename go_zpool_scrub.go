@@ -74,7 +74,6 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   for k := 0; k < len(pools); k++ {
     fmt.Println(pools[k].Name)
     for i := 2; i < len(string(pools[k].Scan)); i++ {
-      fmt.Println(string(pools[k].Scan[i-2:i]))
       if string(pools[k].Scan[i-2:i]) == "on " { //date of scrub begins after "on"
         //fmt.Println("on")
         pools[k].Scanned = true
@@ -95,7 +94,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         pools[k].Scan_Date = t
         //fmt.Println(t)
         //fmt.Println(pools[k].Scan_Date)
-      } else {
+      } else if i == (len(string(pools[k].Scan)) - 2) {
         fmt.Println(pools[k].Name + " hasn't been scrubbed")
         pools[k].Scanned = false
         break
