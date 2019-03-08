@@ -100,7 +100,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         }
         i = i + 15
         year := string(pools[k].Scan[i-4:i])
-        fmt.Println(month, day, year)
+        //fmt.Println(month, day, year)
         date := year + "-" + month + "-" + day
         t, _ := time.Parse(shortForm, date)
         pools[k].Scan_Date = t
@@ -163,8 +163,6 @@ func Scrub_Least_Recent(pools []Pool) {
 
 func main() {
   pools := Get_zpool_Names()
-  fmt.Println("length of pools list")
-  fmt.Println(len(pools))
   Scrub_Least_Recent(pools)
 }
 
