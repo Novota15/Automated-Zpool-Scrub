@@ -61,12 +61,13 @@ func Get_zpool_scan(pools []Pool) {
     ln := strings.Split(string(stdout1), "\n")
     //find the line with the scan info:
     scan := 0
-    for i := 0; i < len(ln); i++ {
-      line = ln[i]
+    for k := 0; k < len(ln); k++ {
+      line = ln[k]
       for j := 0; j < len(line - 6); j++ {
-        if line[j:j+4] == "scan"
-        scan = j
-        break
+        if line[j:j+4] == "scan" {
+          scan = j
+          break
+        }
       }
     }
     scan_output := ln[scan] //line containing the scrub info
