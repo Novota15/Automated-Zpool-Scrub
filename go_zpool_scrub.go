@@ -101,8 +101,6 @@ func Get_zpool_Scrub_Date(pools []Pool) {
       }
     }
   }
-  //fmt.Println("here:")
-  //fmt.Println(pools[0].Scan_Date)
 }
 
 //returns the index of the pool with the oldest scrub
@@ -140,15 +138,17 @@ func Perform_Scrub(pool Pool) {
   return
 }
 
-func main() {
-
-  pools := Get_zpool_Names()
+func Scrub_Least_Recent(pools []Pool) {
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
   j := Find_Oldest_Scrub(pools)
   fmt.Println("pool to be scrubbed:")
   fmt.Println(pools[j])
   Perform_Scrub(pools[j])
+}
 
+func main() {
+  pools := Get_zpool_Names()
+  Scrub_Least_Recent(pools)
 }
 
