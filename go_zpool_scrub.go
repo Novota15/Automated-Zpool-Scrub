@@ -93,9 +93,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         pools[k].Scan_Date = t
         //fmt.Println(t)
         //fmt.Println(pools[k].Scan_Date)
-      }
-      // fmt.Println(string(item))
-      else {
+      } else {
         fmt.Println(pools[k].Name + " hasn't been scrubbed")
         pools[k].Scanned = false
       }
