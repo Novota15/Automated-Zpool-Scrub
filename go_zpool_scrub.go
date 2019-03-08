@@ -72,8 +72,8 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   const shortForm = "2006-Jan-02"
   for k := 0; k < len(pools); k++ {
     fmt.Println(pools[k].Name)
-    for i := 3; i < len(string(pools[k].Scan)); i++ {
-      if string(pools[k].Scan[i-3:i]) == "on " { //date of scrub begins after "on"
+    for i := 2; i < len(string(pools[k].Scan)); i++ {
+      if string(pools[k].Scan[i-2:i]) == "on " { //date of scrub begins after "on"
         //fmt.Println("on")
         pools[k].Scanned = true
         i = i + 8
