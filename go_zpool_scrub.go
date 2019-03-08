@@ -84,7 +84,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
         if x < 10 {
-          day = "0" + string(pools[k].Scan[i-1:i])
+          day = "0" + string(pools[k].Scan[i])
         }
         i = i + 13
         year := string(pools[k].Scan[i-4:i])
