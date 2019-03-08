@@ -95,7 +95,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         //fmt.Println(t)
         //fmt.Println(pools[k].Scan_Date)
       } else if i == (len(string(pools[k].Scan)) - 2) {
-        fmt.Println(pools[k].Name + " hasn't been scrubbed")
+        //fmt.Println(pools[k].Name + " hasn't been scrubbed")
         pools[k].Scanned = false
         break
       }
@@ -138,14 +138,14 @@ func Get_zpool_Scrub_Date(pools []Pool) {
 //returns the index of the pool with the oldest scrub
 func Find_Oldest_Scrub(pools []Pool) int{
   j := 0
-  for j = 0; j < len(pools); j++ {
-    if pools[j].Scanned == true {
-      break
+  for j = 0; j < len(pools); j++ { //check if any pool has never been scrubbed
+    if pools[j].Scanned == false {
+      fmt.Println(pools[j].Name + " hasn't been scrubbed yet")
+      return j
     }
   }
-  fmt.Println("j:")
-  fmt.Println(j)
-  for i := 1; i < len(pools); i++ {
+  j = 0
+  for i := 1; i < len(pools); i++ { //if all have been scrubbed, find the oldest
     if pools[i].Scanned == true {
       if pools[j].Scan_Date.After(pools[i].Scan_Date) {
       j = i
@@ -176,7 +176,7 @@ func main() {
   Get_zpool_scan(pools)
   Get_zpool_Scrub_Date(pools)
   j := Find_Oldest_Scrub(pools)
-  fmt.Println("Oldest Scrub:")
+  fmt.Println("pool to be scrubbed:")
   fmt.Println(pools[j])
   Perform_Scrub(pools[j])
 
