@@ -39,6 +39,7 @@ func Get_zpool_Names() []Pool {
     pool := s[0] //name of the pool ->start of each line
     //fmt.Println(pool)
     pools[i-1].Name = pool
+    pools[i-1].Scanned = false
   }
   
   return pools
@@ -72,7 +73,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
   for k := 0; k < len(pools); k++ {
     fmt.Println(pools[k].Name)
     for i := 2; i < len(string(pools[k].Scan)); i++ {
-      if string(pools[k].Scan[i-2:i]) == "on" && string(pools[k].Scan[i:i+1] == " ") //date of scrub begins after "on"
+      if (string(pools[k].Scan[i-2:i]) == "on" && string(pools[k].Scan[i:i+1] == " ")) { //date of scrub begins after "on"
         //fmt.Println("on")
         pools[k].Scanned = true
         i = i + 8
