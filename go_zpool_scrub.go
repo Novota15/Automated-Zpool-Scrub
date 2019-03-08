@@ -13,6 +13,7 @@ type Pool struct {
   Scan string
   Scan_Date time.Time
   Scanned bool
+  State string
 }
 
 //creates Pool struct for each pool and stores in pools list
@@ -62,9 +63,9 @@ func Get_zpool_scan(pools []Pool) {
 
     //find the line with the scan info:
     scan := 0
-    for k := 0; k < len(ln); k++ {
+    for k := 0; k < len(ln); k++ { //go through each line
       line := string(ln[k])
-      for j := 0; j < (len(line) - 6); j++ {
+      for j := 0; j < (len(line) - 6); j++ { //search for the line with scan info
         if string(line[j:j+4]) == "scan" {
           scan = j
           break
