@@ -81,7 +81,7 @@ func Get_All_zpools() []Pool {
   return pools
 }
 
-Get_Online_zpools(pools []Pool) []Pool{
+func Get_Online_zpools(pools []Pool) []Pool{
   length := 0
   for i := 0; i < len(pools); i++ {
     if pools[i].State == "ONLINE" {
