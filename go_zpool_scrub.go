@@ -75,7 +75,7 @@ func Get_All_zpools() []Pool {
     pools[i].Name = pool_name
     pools[i].Scanned = false
     pools[i].State = pool_health
-    fmt.Println(pools[i])
+    //fmt.Println(pools[i])
   }
   return pools
 }
@@ -127,7 +127,7 @@ func Get_zpool_scan(pools []Pool) {
     scan_output := ln[scan] //line containing the scrub info
     //fmt.Println(scan_output)
     pools[i].Scan = scan_output
-    //fmt.Println(string(pools[i].Scan))
+    fmt.Println(string(pools[i].Scan))
   }
   return
 }
