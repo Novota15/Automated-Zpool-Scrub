@@ -29,11 +29,11 @@ func Get_All_zpools() []Pool {
   }
 
   ln := strings.Split(string(stdout), "\n") //split into lines
-  //fmt.Println(ln)
+  
   pools_size := len(ln) - 1
   pools := make([]Pool, pools_size)
 
-  //fmt.Println("creating pool list: ")
+  //creating initial pool list
   for i := 0; i < pools_size; i++ {
     data := strings.Split(ln[i], "\t")
     pool_name := data[0]
@@ -41,11 +41,11 @@ func Get_All_zpools() []Pool {
     pools[i].Name = pool_name
     pools[i].Scanned = false
     pools[i].State = pool_health
-    //fmt.Println(pools[i])
   }
   return pools
 }
 
+//create a list of only the zpools that are online
 func Get_Online_zpools(pools []Pool) []Pool{
   length := 0
   for i := 0; i < len(pools); i++ {
@@ -90,10 +90,7 @@ func Get_zpool_scan(pools []Pool) {
       }
     }
     scan_output := scan //line containing the scrub info
-    //fmt.Println(scan_output)
     pools[i].Scan = scan_output
-    //fmt.Println(pools[i].Name)
-    //fmt.Println(string(pools[i].Scan))
   }
   return
 }
@@ -106,7 +103,6 @@ func Get_zpool_Scrub_Date(pools []Pool) {
     fmt.Println(pools[k].Name)
     for i := 3; i < len(string(pools[k].Scan)); i++ {
       if string(pools[k].Scan[i-3:i]) == "on " { //date of scrub begins after "on"
-        //fmt.Println("on")
         pools[k].Scanned = true
         i = i + 7
         month := string(pools[k].Scan[i-3:i])
@@ -124,7 +120,6 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         date := year + "-" + month + "-" + day
         t, _ := time.Parse(shortForm, date)
         pools[k].Scan_Date = t
-        //fmt.Println(t)
         //fmt.Println("adding scan date to " + pools[k].Name)
         fmt.Println(pools[k].Scan_Date)
       } else if i == (len(string(pools[k].Scan)) - 2) {
