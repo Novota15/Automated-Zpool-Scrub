@@ -113,11 +113,12 @@ func Get_zpool_scan(pools []Pool) {
     ln := strings.Split(string(stdout1), "\n")
 
     //find the line with the scan info:
+    scan := ""
     for k := 0; k < len(ln); k++ { //go through each line
       line := string(ln[k])
       for j := 0; j < (len(line) - 6); j++ { //search for the line with scan info
         if string(line[j:j+4]) == "scan" {
-          scan := line
+          scan = line
           break
         }
       }
