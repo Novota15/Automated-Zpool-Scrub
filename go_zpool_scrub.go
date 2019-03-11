@@ -50,7 +50,7 @@ type Pool struct {
 //   return pools
 // }
 
-func Get_zpools() []Pool {
+func Get_All_zpools() []Pool {
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
   stdout, err := cmd.Output()
 
@@ -65,9 +65,6 @@ func Get_zpools() []Pool {
   ln := strings.Split(string(stdout), "\n") //split into lines
   fmt.Println(ln)
   pools_size := len(ln) - 1
-  for k := 0; k < pools_size; k++ {
-    fmt.Println("k: " + ln[k])
-  }
   fmt.Println("pool list size: " + string(pools_size))
   pools := make([]Pool, pools_size)
 
@@ -82,6 +79,20 @@ func Get_zpools() []Pool {
     fmt.Println(pools[i])
   }
   return pools
+}
+
+Get_Online_zpools(pools []Pool) []Pool{
+  length := 0
+  for i := 0; i < len(pools); i++ {
+    if pools[i].State == "ONLINE" {
+      length++
+    }
+  }
+  online_pools := make([]Pool, length)
+  for k := 0; k < length; k++ {
+    online_pools[k] = pools[k]
+  }
+  return online_pools
 }
 
 //gets the scan info for each pool in pools list
@@ -134,13 +145,13 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         day := string(pools[k].Scan[i-2:i])
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
-        fmt.Println("day of scan seen: " + day)
+        //fmt.Println("day of scan seen: " + day)
         if x < 10 {
           day = "0" + string(pools[k].Scan[i-1])
         }
         i = i + 14
         year := string(pools[k].Scan[i-4:i])
-        fmt.Println("date seen: ", month, day, year)
+        //fmt.Println("date seen: ", month, day, year)
         date := year + "-" + month + "-" + day
         t, _ := time.Parse(shortForm, date)
         pools[k].Scan_Date = t
@@ -202,7 +213,8 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 func main() {
-  pools := Get_zpools()
-  Scrub_Least_Recent(pools)
+  pools := Get_All_zpools()
+  online_pools := Get_Online_zpools(pools)
+  Scrub_Least_Recent(online_pools)
 }
 
