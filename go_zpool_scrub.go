@@ -63,12 +63,11 @@ func Get_All_zpools() []Pool {
   }
 
   ln := strings.Split(string(stdout), "\n") //split into lines
-  fmt.Println(ln)
+  //fmt.Println(ln)
   pools_size := len(ln) - 1
-  fmt.Println("pool list size: " + string(pools_size))
   pools := make([]Pool, pools_size)
 
-  fmt.Println("creating pool list: ")
+  //fmt.Println("creating pool list: ")
   for i := 0; i < pools_size; i++ {
     data := strings.Split(ln[i], "\t")
     pool_name := data[0]
@@ -89,8 +88,12 @@ func Get_Online_zpools(pools []Pool) []Pool{
     }
   }
   online_pools := make([]Pool, length)
+  fmt.Println("Online Pools: ")
   for k := 0; k < length; k++ {
-    online_pools[k] = pools[k]
+    if pools[k].State == "ONLINE" {
+      online_pools[k] = pools[k]
+      fmt.Println(online_pools[k])
+    }
   }
   return online_pools
 }
