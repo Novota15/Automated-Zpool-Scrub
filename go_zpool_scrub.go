@@ -130,7 +130,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         pools[k].Scanned = true
         i = i + 7
         month := string(pools[k].Scan[i-3:i])
-        i = i + 2
+        i = i + 3
         day := string(pools[k].Scan[i-2:i])
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
@@ -138,7 +138,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         if x < 10 {
           day = "0" + string(pools[k].Scan[i])
         }
-        i = i + 15
+        i = i + 14
         year := string(pools[k].Scan[i-4:i])
         fmt.Println("date seen: ", month, day, year)
         date := year + "-" + month + "-" + day
