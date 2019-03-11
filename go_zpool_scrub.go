@@ -127,7 +127,7 @@ func Get_zpool_scan(pools []Pool) {
     scan_output := ln[scan] //line containing the scrub info
     //fmt.Println(scan_output)
     pools[i].Scan = scan_output
-    fmt.Println(string(pools[i].Scan))
+    //fmt.Println(string(pools[i].Scan))
   }
   return
 }
@@ -152,8 +152,8 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         if x < 10 {
           day = "0" + string(pools[k].Scan[i-1])
         }
-        i = i + 14
-        year := string(pools[k].Scan[i-4:i])
+        i = i + 13
+        year := string(pools[k].Scan[i-3:i+1])
         //fmt.Println("date seen: ", month, day, year)
         date := year + "-" + month + "-" + day
         t, _ := time.Parse(shortForm, date)
