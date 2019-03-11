@@ -122,7 +122,7 @@ func Get_zpool_scan(pools []Pool) {
         }
       }
     }
-    scan_output := line //line containing the scrub info
+    scan_output := scan //line containing the scrub info
     //fmt.Println(scan_output)
     pools[i].Scan = scan_output
     fmt.Println(pools[i].Name)
