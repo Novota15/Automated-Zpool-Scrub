@@ -109,9 +109,17 @@ func Get_zpool_scan(pools []Pool) {
       println(err1.Error())
       return
     }
-
+    stdout1 = "pool: z2pool-1
+ state: ONLINE
+status: Some supported features are not enabled on the pool. The pool can
+        still be used, but some features are unavailable.
+action: Enable all features using 'zpool upgrade'. Once this is done,
+        the pool may no longer be accessible by software that does not support
+        the features. See zpool-features(5) for details.
+  scan: scrub repaired 0 in 33h44m with 0 errors on Wed Dec 12 23:29:16 2018
+config:"
     //find the date of last scrub and store in Status
-    ln := strings.Split(string(stdout1), "\n")
+    ln := strings.Split(stdout1), "\n")
 
     //find the line with the scan info:
     scan := 0
