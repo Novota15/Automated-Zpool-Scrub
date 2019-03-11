@@ -1,6 +1,8 @@
 # Go zpool Scrub
 
-This is a program written in GO that reads the dates that each zpool was scrubbed and executes the ```zpool scrub``` command on the zpool that was scrubbed the longest time ago (accurate up to the day).
+This is a program written in GO that automates zpool scrubbing.
+
+It reads the dates that each zpool was scrubbed and executes the ```zpool scrub``` command on the zpool that was scrubbed the longest time ago (accurate up to the day).
 
 ## When Installing Go
 
