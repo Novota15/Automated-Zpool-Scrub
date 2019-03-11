@@ -16,40 +16,6 @@ type Pool struct {
   Scanned bool
 }
 
-//creates Pool struct for each pool and stores in pools list
-// func Get_zpool_Names() []Pool {
-//   cmd := exec.Command("bash", "-c", "zpool list")
-//   //cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
-
-//   stdout, err := cmd.Output()
-
-//   p := make([]Pool, 5)
-
-//   if err != nil {
-//     fmt.Println("Not Working")
-//     println(err.Error())
-//     return p
-//   }
-
-//   ln := strings.Split(string(stdout), "\n") //split into lines
-//   //create array for storing pool structs that has length ln - 2
-//   pool_size := len(ln) - 2
-//   pools := make([]Pool, pool_size)
-//   for i := 1; i < len(ln) - 1; i++ { //iterate thru each line
-//     //fmt.Println(ln[i])
-//     s := strings.Split(ln[i], " ") //split each line
-//     pool := s[0] //name of the pool ->start of each line
-//     //health := s[1]
-//     //fmt.Println(pool)
-//     //fmt.Println(health)
-//     pools[i-1].Name = pool
-//     pools[i-1].Scanned = false
-//     //pools[i-1].State = health
-//   }
-  
-//   return pools
-// }
-
 func Get_All_zpools() []Pool {
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
   stdout, err := cmd.Output()
@@ -126,8 +92,8 @@ func Get_zpool_scan(pools []Pool) {
     scan_output := scan //line containing the scrub info
     //fmt.Println(scan_output)
     pools[i].Scan = scan_output
-    fmt.Println(pools[i].Name)
-    fmt.Println(string(pools[i].Scan))
+    //fmt.Println(pools[i].Name)
+    //fmt.Println(string(pools[i].Scan))
   }
   return
 }
