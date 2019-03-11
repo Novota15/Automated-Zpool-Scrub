@@ -208,11 +208,11 @@ func Perform_Scrub(pool Pool) {
 
 func Scrub_Least_Recent(pools []Pool) {
   Get_zpool_scan(pools)
-  Get_zpool_Scrub_Date(pools)
-  j := Find_Oldest_Scrub(pools)
-  fmt.Println("pool to be scrubbed:")
-  fmt.Println(pools[j])
-  Perform_Scrub(pools[j])
+  //Get_zpool_Scrub_Date(pools)
+  //j := Find_Oldest_Scrub(pools)
+  //fmt.Println("pool to be scrubbed:")
+  //fmt.Println(pools[j])
+  //Perform_Scrub(pools[j])
 }
 
 func main() {
