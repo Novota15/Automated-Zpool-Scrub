@@ -177,6 +177,10 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 func main() {
+  fmt.Print("Enter text: ")
+  var input string
+  fmt.Scanln(&input)
+  fmt.Print(input)
   pools := Get_All_zpools()
   online_pools := Get_Online_zpools(pools)
   Scrub_Least_Recent(online_pools)
