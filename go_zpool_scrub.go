@@ -17,38 +17,38 @@ type Pool struct {
 }
 
 //creates Pool struct for each pool and stores in pools list
-func Get_zpool_Names() []Pool {
-  cmd := exec.Command("bash", "-c", "zpool list")
-  //cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
+// func Get_zpool_Names() []Pool {
+//   cmd := exec.Command("bash", "-c", "zpool list")
+//   //cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
 
-  stdout, err := cmd.Output()
+//   stdout, err := cmd.Output()
 
-  p := make([]Pool, 5)
+//   p := make([]Pool, 5)
 
-  if err != nil {
-    fmt.Println("Not Working")
-    println(err.Error())
-    return p
-  }
+//   if err != nil {
+//     fmt.Println("Not Working")
+//     println(err.Error())
+//     return p
+//   }
 
-  ln := strings.Split(string(stdout), "\n") //split into lines
-  //create array for storing pool structs that has length ln - 2
-  pool_size := len(ln) - 2
-  pools := make([]Pool, pool_size)
-  for i := 1; i < len(ln) - 1; i++ { //iterate thru each line
-    //fmt.Println(ln[i])
-    s := strings.Split(ln[i], " ") //split each line
-    pool := s[0] //name of the pool ->start of each line
-    //health := s[1]
-    //fmt.Println(pool)
-    //fmt.Println(health)
-    pools[i-1].Name = pool
-    pools[i-1].Scanned = false
-    //pools[i-1].State = health
-  }
+//   ln := strings.Split(string(stdout), "\n") //split into lines
+//   //create array for storing pool structs that has length ln - 2
+//   pool_size := len(ln) - 2
+//   pools := make([]Pool, pool_size)
+//   for i := 1; i < len(ln) - 1; i++ { //iterate thru each line
+//     //fmt.Println(ln[i])
+//     s := strings.Split(ln[i], " ") //split each line
+//     pool := s[0] //name of the pool ->start of each line
+//     //health := s[1]
+//     //fmt.Println(pool)
+//     //fmt.Println(health)
+//     pools[i-1].Name = pool
+//     pools[i-1].Scanned = false
+//     //pools[i-1].State = health
+//   }
   
-  return pools
-}
+//   return pools
+// }
 
 func Get_zpools() []Pool {
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
@@ -134,6 +134,7 @@ func Get_zpool_Scrub_Date(pools []Pool) {
         day := string(pools[k].Scan[i-2:i])
         //add 0 to the day if day < 10
         x, _ := strconv.Atoi(day)
+        fmt.Println("day of scan seen: " + day)
         if x < 10 {
           day = "0" + string(pools[k].Scan[i])
         }
