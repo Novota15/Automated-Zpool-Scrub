@@ -177,7 +177,7 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 func main() {
-  fmt.Print("Enter text: ")
+  //fmt.Print("Enter text: ")
   var input string
   fmt.Scanln(&input)
   fmt.Print(input)
