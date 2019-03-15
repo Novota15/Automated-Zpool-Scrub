@@ -182,7 +182,7 @@ func main() {
   //var input string
   //fmt.Scanln(&input)
   //fmt.Print(input)
-  wordPtr := flag.String("exclude", "foo", "a string")
+  wordPtr := flag.String("word", "foo", "a string")
   flag.Parse()
   fmt.Println("exclusion list: ", *wordPtr)
 
