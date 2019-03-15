@@ -10,26 +10,34 @@ make sure ```/usr/local/go/bin``` is added to PATH which can be done by using th
 
 ## Running the program
 
-The program must be run with root privileges in order for the scrub command to execute correctly
+The program must be run with root privileges in order for the scrub command to execute correctly.
 
 You can use ```sudo go run go_zpool_scrub.go```
 
 OR run the executable by typing ```~/go-zpool-scrub/bin/go_zpool_scrub```
 
-The executable is created by executing ```go install``` inside the directory ```go-zpool-scrub/src/main/nf/go_zpool_scrub``` which will place the executable inside the ```/bin``` directory
+The executable is created by executing ```go install``` inside the directory ```go-zpool-scrub/src/main/nf/go_zpool_scrub``` which will place the executable inside the ```/bin``` directory.
+
+Using ```go build``` will place the executable within the same directory as the .go file instead.
+
+###### Excluding a list of zpools in the program
+
+go_zpool_scrub includes the ability to flag a list of zpools that should be avoided by the program. This list is declared when running the go_zpool_scrub executable:
+
+```./go_zpool_scrub -exclude=(comma separated list of pools with no spacing between)```
 
 ###### Running as a Cron Job
 
 write ```sudo crontab -e```
 edit the crontab:
 1) press ```esc```
-2) press ```i``` to begin editing the file
+2) press ```i``` to begin editing the file.
 3) paste cron command into the file.
 
 Example for running at 1 am every day: 
 ```0 1 * * * /usr/local/go/bin /home/student/go-zpool-scrub/go_zpool_scrub.go > /dev/null 2>&1```.
 
-4) press ```esc``` again to exit editing mode
-5) type ```:wq``` to save
+4) press ```esc``` again to exit editing mode.
+5) type ```:wq``` to save.
 
 cron jobs can be viewed with ```sudo crontab -l```
