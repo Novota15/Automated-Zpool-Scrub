@@ -44,7 +44,7 @@ func Get_All_zpools(exclusion_list []string) []Pool {
     pools[i].State = pool_health
     //check if pool is in exclusion list to get a count of pools needed to be taken out
     for j := 0; j < len(exclusion_list); j++ {
-      if pools[i] == exclusion_list[j] {
+      if pools[i].Name == exclusion_list[j] {
         excluded_pools_count++
       }
     }
