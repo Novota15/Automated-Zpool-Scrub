@@ -51,22 +51,22 @@ func Get_All_zpools(exclusion_list []string) []Pool {
     //fmt.Println(pools[i])
   }
   //create new pool list
-  pools2 := make([]Pool, (pools_size - excluded_pools_count))
+  pools2 := []Pool{}
   index_correction := 0
-  included := false
+  included := true
   //create new list that does not include pools in exclusion list
   for j := 0; j < pools_size; j++ {
     for k := 0; k < len(exclusion_list); k++ {
-      if pools[j].Name != exclusion_list[k] {
-        pools2[j - index_correction] = pools[j]
-        included = true
+      if pools[j].Name == exclusion_list[k] {
+        included = false //found a match in exclusion list
       }
     }
-    if included == true {
-      index_correction++
-      included = false
+    if included == true { //no match found in exclusion list
+      pools2 = append(pools2, pools[j])
     }
+    included = true
   }
+  fmt.Println("Pools 2: ")
   fmt.Println(pools2)
   return pools2
 }
