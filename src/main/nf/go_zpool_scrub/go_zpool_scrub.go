@@ -18,6 +18,8 @@ type Pool struct {
 }
 
 func Get_All_zpools(exclusion_list []string) []Pool {
+  fmt.Println("HERE:")
+  fmt.Println(exclusion_list)
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
   stdout, err := cmd.Output()
 
@@ -206,8 +208,7 @@ func Scrub_Least_Recent(pools []Pool) {
 
 func Parse_Exclusion_List(exclude string) []string{
   exclusion_list := strings.Split(exclude, ",")
-  fmt.Println(exclusion_list)
-
+  
   return exclusion_list
 }
 
