@@ -52,7 +52,7 @@ func Get_All_zpools(exclusion_list []string) []Pool {
   }
   //create new pool list
   pools2 := []Pool{}
-  index_correction := 0
+
   included := true
   //create new list that does not include pools in exclusion list
   for j := 0; j < pools_size; j++ {
