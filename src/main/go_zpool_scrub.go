@@ -184,7 +184,8 @@ func main() {
   //fmt.Print(input)
   wordPtr := flag.String("word", "foo", "a string")
   flag.Parse()
-  fmt.Println("exclusion list: ", *wordPtr)
+  fmt.Println("word: ", *wordPtr)
+  fmt.Println("tail: ", flag.Args())
 
   pools := Get_All_zpools()
   online_pools := Get_Online_zpools(pools)
