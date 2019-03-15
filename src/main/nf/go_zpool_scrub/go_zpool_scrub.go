@@ -18,8 +18,6 @@ type Pool struct {
 }
 
 func Get_All_zpools(exclusion_list []string) []Pool {
-  fmt.Println("HERE:")
-  fmt.Println(exclusion_list)
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
   stdout, err := cmd.Output()
 
@@ -55,14 +53,18 @@ func Get_All_zpools(exclusion_list []string) []Pool {
   //create new pool list
   pools2 := make([]Pool, (pools_size - excluded_pools_count))
   index_correction := 0
+  included := false
   //create new list that does not include pools in exclusion list
   for j := 0; j < pools_size; j++ {
     for k := 0; k < len(exclusion_list); k++ {
       if pools[j].Name != exclusion_list[k] {
         pools2[j - index_correction] = pools[j]
-      } else {
-        index_correction++
+        included = true
       }
+    }
+    if included == true {
+      index_correction++
+      included = false
     }
   }
   fmt.Println(pools2)
