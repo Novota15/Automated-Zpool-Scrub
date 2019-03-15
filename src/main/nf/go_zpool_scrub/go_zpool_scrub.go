@@ -66,8 +66,7 @@ func Get_All_zpools(exclusion_list []string) []Pool {
     }
     included = true
   }
-  fmt.Println("Pools 2: ")
-  fmt.Println(pools2)
+  
   return pools2
 }
 
