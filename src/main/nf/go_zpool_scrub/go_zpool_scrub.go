@@ -17,7 +17,7 @@ type Pool struct {
   Scanned bool
 }
 
-func Get_All_zpools() []Pool {
+func Get_All_zpools(exclusion_list []string) []Pool {
   cmd := exec.Command("bash", "-c", "zpool list -H -o name,health")
   stdout, err := cmd.Output()
 
@@ -33,8 +33,8 @@ func Get_All_zpools() []Pool {
   //fmt.Println(ln)
   pools_size := len(ln) - 1
   pools := make([]Pool, pools_size)
-
-  //fmt.Println("creating pool list: ")
+  excluded_pools_count := 0
+  //creating a list of ALL pools
   for i := 0; i < pools_size; i++ {
     data := strings.Split(ln[i], "\t")
     pool_name := data[0]
@@ -42,9 +42,28 @@ func Get_All_zpools() []Pool {
     pools[i].Name = pool_name
     pools[i].Scanned = false
     pools[i].State = pool_health
+    //check if pool is in exlusion list to get a count of pools needed to be taken out
+    for j := 0; j < len(exclusion_list); j++ {
+      if pools[i] == exclusion_list[j] {
+        excluded_pools_count++
+      }
+    }
     //fmt.Println(pools[i])
   }
-  return pools
+  pools2 := make([]Pool, (pools_size - excluded_pools_count))
+  index_correction := 0
+  //create new list that does not include pools in exclusion list
+  for j := 0; j < pools_size; j++ {
+    for k := 0 k < len(exclusion_list); k++ {
+      if pools[j].Name != exclusion_list[k] {
+        pools2[j - index_correction] = pools[j]
+      } else {
+        index_correction++
+      }
+    }
+  }
+  fmt.Println(pools2)
+  return pools2
 }
 
 func Get_Online_zpools(pools []Pool) []Pool{
@@ -184,20 +203,22 @@ func Scrub_Least_Recent(pools []Pool) {
   return
 }
 
-//get zpool exclusion list from command line flag
-func Parse_Exclusion_List(exclude string) {
+func Parse_Exclusion_List(exclude string) []string{
   exclusion_list := strings.Split(exclude, ",")
   fmt.Println(exclusion_list)
-  return
+
+  return exclusion_list
 }
 
 func main() {
+  //get zpool exclusion list from command line flag
   wordPtr := flag.String("exclude", "foo", "a string")
   flag.Parse()
-  fmt.Println("exclusion list: ", *wordPtr)
-  fmt.Println("tail: ", flag.Args())
-  Parse_Exclusion_List(*wordPtr)
-  pools := Get_All_zpools()
+  //fmt.Println("exclusion list: ", *wordPtr)
+  //fmt.Println("tail: ", flag.Args())
+  exclusion_list := Parse_Exclusion_List(*wordPtr)
+
+  pools := Get_All_zpools(exclusion_list)
   online_pools := Get_Online_zpools(pools)
   Scrub_Least_Recent(online_pools)
 }
