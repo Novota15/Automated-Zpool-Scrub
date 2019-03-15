@@ -33,7 +33,7 @@ func Get_All_zpools(exclusion_list []string) []Pool {
   
   pools_size := len(ln) - 1
   pools := make([]Pool, pools_size)
-  excluded_pools_count := 0
+  
   //creating a list of ALL pools
   for i := 0; i < pools_size; i++ {
     data := strings.Split(ln[i], "\t")
@@ -42,12 +42,6 @@ func Get_All_zpools(exclusion_list []string) []Pool {
     pools[i].Name = pool_name
     pools[i].Scanned = false
     pools[i].State = pool_health
-    //check if pool is in exclusion list to get a count of pools needed to be taken out
-    for j := 0; j < len(exclusion_list); j++ {
-      if pools[i].Name == exclusion_list[j] {
-        excluded_pools_count++
-      }
-    }
     //fmt.Println(pools[i])
   }
   //create new pool list
