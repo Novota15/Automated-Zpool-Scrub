@@ -185,16 +185,18 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 //get zpool exclusion list from command line flag
-func Get_Exclusion_List() {
-  wordPtr := flag.String("exclude", "foo", "a string")
-  flag.Parse()
-  fmt.Println("exclusion list: ", *wordPtr)
-  fmt.Println("tail: ", flag.Args())
-  
+func Parse_Exclusion_List(exclude string) {
+  exclusion_list := strings.Split(exclude, ",")
+  fmt.Println(exclusion_list)
   return
 }
 
 func main() {
+  wordPtr := flag.String("exclude", "foo", "a string")
+  flag.Parse()
+  fmt.Println("exclusion list: ", *wordPtr)
+  fmt.Println("tail: ", flag.Args())
+  Parse_Exclusion_List(*wordPtr)
   pools := Get_All_zpools()
   online_pools := Get_Online_zpools(pools)
   Scrub_Least_Recent(online_pools)
