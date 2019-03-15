@@ -6,6 +6,7 @@ import (
    "os/exec"
    "strconv"
    "time"
+   "flag"
 )
 
 type Pool struct {
@@ -182,6 +183,11 @@ func Scrub_Least_Recent(pools []Pool) {
 }
 
 func main() {
+  wordPtr := flag.String("word", "foo", "a string")
+  flag.Parse()
+  fmt.Println("word: ", *wordPtr)
+  fmt.Println("tail: ", flag.Args())
+  
   pools := Get_All_zpools()
   online_pools := Get_Online_zpools(pools)
   Scrub_Least_Recent(online_pools)
